@@ -1,0 +1,24 @@
+<div style="padding-left: 100px; padding-top: 50px;">
+
+  <div style="text-align: center;">
+    Sort cats by:
+    <mat-button-toggle-group value="vote" style="margin-left:10px;">
+      <mat-button-toggle selected value="vote" (change)="onValChange($event.value)">Votes</mat-button-toggle>
+      <mat-button-toggle value="timestamp" (change)="onValChange($event.value)">Time of vote</mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-button-toggle-group value="desc" style="margin-left:10px;">
+      <mat-button-toggle selected value="asc" (change)="onValChange($event.value)">Ascending</mat-button-toggle>
+      <mat-button-toggle value="desc" (change)="onValChange($event.value)">Descending</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div fxLayout="row wrap">
+    <fa name="cog" animation="spin"></fa>
+    <div *ngFor="let cat of allCats" style="padding: 10px;">
+      <div class="cat-container">
+        <h3>{{cat.votes}} votes</h3>
+        <img [src]="cat.url" alt="" class="src" >
+      </div>
+    </div>
+  </div>
+</div>

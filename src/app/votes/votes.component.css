@@ -1,0 +1,22 @@
+.row {
+  margin-top: 20px;
+  display: flex;
+  height: 500px;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 25px;
+}
+
+.column img {
+  opacity: 1;
+  width: 100%;
+  height: 350px;
+  cursor: pointer;
+}
+
+.column img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

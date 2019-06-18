@@ -1,0 +1,9 @@
+<div class="row">
+  <ngx-loading [show]="loading" [config]="{ fullScreenBackdrop: false}"></ngx-loading>
+  <div class="column">
+    <img [src]="firstCat.url" (click)="myTypeScriptFunction(firstCat, item)" (load)="waitForLoad()">
+  </div>
+  <div class="column">
+    <img [src]="secondCat.url" (click)="myTypeScriptFunction(secondCat, item)" (load)="waitForLoad()">
+  </div>
+</div>
