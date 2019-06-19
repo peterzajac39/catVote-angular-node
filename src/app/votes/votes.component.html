@@ -1,9 +1,11 @@
 <div class="row">
   <ngx-loading [show]="loading" [config]="{ fullScreenBackdrop: false}"></ngx-loading>
   <div class="column">
-    <img [src]="firstCat.url" (click)="myTypeScriptFunction(firstCat, item)" (load)="waitForLoad()">
+    <div class="cat-name">{{firstCat.name}}</div>
+    <img [src]="firstCat.url" (click)="logCatVote(firstCat)" (load)="waitForLoad()">
   </div>
   <div class="column">
-    <img [src]="secondCat.url" (click)="myTypeScriptFunction(secondCat, item)" (load)="waitForLoad()">
+    <div class="cat-name">{{secondCat.name}}</div>
+    <img [src]="secondCat.url" (click)="logCatVote(secondCat)" (load)="waitForLoad()">
   </div>
 </div>

@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { VotesComponent } from './votes/votes.component';
 import { NgxLoadingModule } from 'ngx-loading';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LoggerService} from "./logger.service";
+import { ParallaxScrollModule } from 'ng2-parallaxscroll';
 
 import {
   MatToolbarModule,
   MatTabsModule,
-  MatButton, MatDividerModule, MatButtonToggleModule
+  MatButton, MatDividerModule, MatButtonToggleModule, MatButtonModule
 } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import { StatsComponent } from './stats/stats.component';
@@ -17,6 +19,7 @@ import { TopComponent } from './top/top.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {MatChipsModule} from '@angular/material/chips';
+import { LightboxModule } from 'ngx-lightbox';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {MatChipsModule} from '@angular/material/chips';
   ],
   imports: [
     MatTabsModule,
+    MatButtonModule,
     BrowserAnimationsModule,
+    LightboxModule,
+    ParallaxScrollModule,
     MatToolbarModule,
     MatChipsModule,
     BrowserModule,
@@ -39,7 +45,7 @@ import {MatChipsModule} from '@angular/material/chips';
     AngularFontAwesomeModule,
     MatButtonToggleModule
   ],
-  providers: [],
+  providers: [LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

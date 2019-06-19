@@ -4,6 +4,9 @@
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const catfaker = require('cat-names');
+const https = require('https');
+
 
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -15,29 +18,23 @@ const dbName = 'myproject';
 const client = new MongoClient(url);
 var db = null;
 
-// Use connect method to connect to the Server
+// Use connect method to connect to the mongo db server
 client.connect(function(err) {
 
   assert.equal(null, err);
   console.log("Connected successfully to mongoDB");
-
   db = client.db(dbName);
-
 });
 
 const insertDocs = function(db, catObj){
   return new Promise((resolve, reject) => {
-
     const collection = db.collection('cats');
-
-  collection.insertOne(catObj, function(err, result) {
-
-      if (err)
-        reject(err)
-      console.log("Inserted cat into db: ", catObj);
-      resolve(result);
-    });
-
+    collection.insertOne(catObj, function(err, result) {
+        if (err)
+          reject(err)
+        console.log("Inserted cat into db: ", catObj);
+        resolve(result);
+      });
   });
 }
 
@@ -53,6 +50,7 @@ const insertDocuments = function(db, catObj, callback) {
   });
 };
 
+// function returns all documents from cats collection
 const findDocuments = function(db, callback) {
   // Get the documents collection
   let collection = db.collection('cats');
@@ -63,6 +61,7 @@ const findDocuments = function(db, callback) {
   });
 };
 
+// function gets random document from cats collection
 const getRandomDocument = function(db) {
 
   let collection = db.collection('cats');
@@ -75,8 +74,30 @@ const getRandomDocument = function(db) {
         resolve(result);
       })
   })
+};
 
-}
+exports.getNewCat = function(req,response){
+
+  https.get('https://api.thecatapi.com/v1/images/search?size=small', (resp) => {
+    let data = '';
+
+    // A chunk of data has been recieved.
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    // The whole response has been received. Print out the result.
+    resp.on('end', () => {
+      let pairObject = JSON.parse(data);
+      // we add fake name of cat
+      pairObject[0]['name'] = catfaker.random();
+      response.status(200).json(pairObject);
+    });
+
+  }).on("error", (err) => {
+    response.status(404).json();
+  });
+};
 
 /**
  * Function returns home page.
@@ -98,29 +119,14 @@ exports.getRandomDocument = function(request, response){
  */
 exports.insertLog = function(request, response){
 
-  console.log("CAT LOG IS GOING ON!", request.body);
   insertDocs(db, request.body).then(res => {
-    console.log('CAT IS THERE');
     response.status(200).json();
   });
 };
 
-// export.getCatsByVotes = function(request, response){
-//
-//   let allCats = [];
-//
-//   findDocuments(db, function(docs) {
-//
-//     docs.forEach(doc=>{
-//       allCats.push(doc.cats);
-//     })
-//   });
-// };
-
 exports.getAllDocs = function(request, response){
 
   findDocuments(db, function(docs) {
-
     response.status(200).json(docs);
   });
 };

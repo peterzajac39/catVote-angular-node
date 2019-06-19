@@ -1,8 +1,8 @@
 <div style="padding-left: 100px; padding-top: 50px;">
 
-  <div style="text-align: center;">
+  <div style="text-align: center; margin-bottom: 15px;">
     Sort cats by:
-    <mat-button-toggle-group value="vote" style="margin-left:10px;">
+    <mat-button-toggle-group value="timestamp" style="margin-left:10px;">
       <mat-button-toggle selected value="vote" (change)="onValChange($event.value)">Votes</mat-button-toggle>
       <mat-button-toggle value="timestamp" (change)="onValChange($event.value)">Time of vote</mat-button-toggle>
     </mat-button-toggle-group>
@@ -16,8 +16,11 @@
     <fa name="cog" animation="spin"></fa>
     <div *ngFor="let cat of allCats" style="padding: 10px;">
       <div class="cat-container">
-        <h3>{{cat.votes}} votes</h3>
-        <img [src]="cat.url" alt="" class="src" >
+        <div class="cat-header">{{cat.name}}</div>
+        <p *ngIf="cat.votes.length != 1">{{cat.votes.length}} votes</p>
+        <p *ngIf="cat.votes.length == 1">{{cat.votes.length}} vote</p>
+        <span *ngIf="getLastVoteTime(cat)!=0">Last vote: {{getLastVoteTime(cat) | date:'short'}}</span>
+        <img [src]="cat.url" alt="" class="src" (click)="open(cat)">
       </div>
     </div>
   </div>

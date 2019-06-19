@@ -38,8 +38,10 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 
 app.post('/api/v1/log' , routes.insertLog);
+
 app.get('/api/v1/getRandomCats' , routes.getRandomDocument);
 app.get('/api/v1/getAllCats' , routes.getAllDocs);
+app.get('/api/v1/getNewCat', routes.getNewCat);
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
     console.log('Express server listening on port ' + app.get('port'));

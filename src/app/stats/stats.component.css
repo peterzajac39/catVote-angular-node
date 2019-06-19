@@ -1,28 +1,9 @@
-/*
-.example-card {
-  padding:15px;
-  width: 200px;
-  height: 200px;
-}
-
-.example-card img {
-  height:150px;
-  width:150px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.card-title {
-  text-align: center;
-}
-*/
 
 img {
-  padding:5px;
   height:150px;
   width:150px;
   border-radius: 70%;
+  cursor: pointer;
 }
 
 .cat-container{
@@ -34,4 +15,28 @@ img {
   margin-right: 10px;
   border-radius: 5px;
   background-color: rgba(230, 236, 255, 0.5);
+}
+
+.cat-header{
+  text-align: center;
+  color: white;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 30%;
+  border-radius: 3px;
+  background-color: rgb(96, 155, 242);
+  padding: 5px;
+  font-size: 100%;
+  font-weight: bolder;
+}
+
+.cat-container p {
+  font-weight: bold;
+}
+
+.red-header{
+  background-color: red !important;
+}
+.green-header{
+  background-color: green !important;
 }

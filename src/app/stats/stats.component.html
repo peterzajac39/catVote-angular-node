@@ -1,32 +1,19 @@
 <div fxLayout="column" fxLayoutAlign="space-around center">
   <h2>{{catPairs.length}} pairs of cats checked.</h2>
   <fa name="cog" animation="spin"></fa>
-    <div *ngFor="let catPair of catPairs" fxLayout="row" fxLayoutAlign="space-around center" style="padding: 10px;">
-<!--      <mat-card class="example-card">-->
-<!--        <mat-card-header>-->
-<!--          <mat-card-title class="card-title">Shiba Inu</mat-card-title>-->
-<!--        </mat-card-header>-->
-<!--        <img mat-card-image [src]="catPair.cats[0].url" >-->
-<!--        <mat-card-content>-->
-<!--        </mat-card-content>-->
-<!--      </mat-card>-->
-
-<!--      <mat-card class="example-card">-->
-<!--        <mat-card-header>-->
-<!--          <mat-card-title class="card-title">Shiba Inu</mat-card-title>-->
-<!--        </mat-card-header>-->
-<!--        <img mat-card-image [src]="catPair.cats[1].url" >-->
-<!--        <mat-card-content>-->
-<!--        </mat-card-content>-->
-<!--      </mat-card>-->
+    <div *ngFor="let catPair of paginatedPairs" fxLayout="row" fxLayoutAlign="space-around center" style="padding: 10px;">
         <div class="cat-container">
-          <h3>{{catPair.cats[0].votes}} votes</h3>
-          <img [src]="catPair.cats[0].url" alt="" class="src" >
+          <div class="cat-header">{{catPair.cats[0].name}}</div>
+          <div class="cat-header" [ngClass]="(catPair.cats[0].votes.length > catPair.cats[1].votes.length)?'green-header':'red-header'" *ngIf="catPair.cats[0].votes.length != 1">{{catPair.cats[0].votes.length}} votes</div>
+          <div class="cat-header" [ngClass]="(catPair.cats[0].votes.length > catPair.cats[1].votes.length)?'green-header':'red-header'" *ngIf="catPair.cats[0].votes.length == 1">{{catPair.cats[0].votes.length}} vote</div>
+          <img [src]="catPair.cats[0].url" alt="" class="src" (click)="open(catPair.cats[0])">
         </div>
         <div class="cat-container">
-          <h3>{{catPair.cats[1].votes}} votes</h3>
-          <img [src]="catPair.cats[1].url" alt="" class="src" >
+          <div class="cat-header">{{catPair.cats[1].name}}</div>
+          <div class="cat-header" [ngClass]="(catPair.cats[1].votes.length > catPair.cats[0].votes.length)?'green-header':'red-header'" *ngIf="catPair.cats[1].votes.length != 1">{{catPair.cats[1].votes.length}} votes</div>
+          <div class="cat-header"[ngClass]="(catPair.cats[1].votes.length > catPair.cats[0].votes.length)?'green-header':'red-header'"  *ngIf="catPair.cats[1].votes.length == 1">{{catPair.cats[1].votes.length}} vote</div>
+          <img [src]="catPair.cats[1].url" alt="" class="src" (click)="open(catPair.cats[1])">
         </div>
-
     </div>
+    <button *ngIf="paginationIndex < this.catPairs.length" (click)="showMore()" mat-raised-button color="primary" style="margin-bottom: 20px; margin-top: 10px;">Show more</button>
 </div>

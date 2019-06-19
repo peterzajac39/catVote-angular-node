@@ -19,19 +19,37 @@
 */
 
 img {
-  padding:5px;
   height:150px;
   width:150px;
   border-radius: 70%;
+  cursor: pointer;
+  margin-top:10px;
 }
 
 .cat-container{
   text-align: center;
   width: 200px;
-  height: 230px;
+  height: 270px;
   padding: 15px;
   margin-left: 10px;
   margin-right: 10px;
   border-radius: 5px;
   background-color: rgba(230, 236, 255, 0.5);
+}
+
+.cat-header{
+  text-align: center;
+  color: white;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 30%;
+  border-radius: 3px;
+  background-color: rgb(96, 155, 242);
+  padding: 5px;
+  font-size: 100%;
+  font-weight: bolder;
+}
+
+.cat-container p {
+  font-weight: bold;
 }

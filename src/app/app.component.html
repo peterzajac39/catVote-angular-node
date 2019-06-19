@@ -1,22 +1,20 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--<div style="text-align:center">-->
-<!--  <h1>-->
-<!--    Welcome to {{ title }}!-->
-<!--  </h1>-->
-<!--</div>-->
-<mat-toolbar color="primary">
-  <p style="margin: auto">CAT VOTER</p>
-</mat-toolbar>
+<div style="min-height: 800px;margin:-10px;">
 
-<mat-tab-group>
-  <mat-tab label="Vote">
-    <app-votes></app-votes>
-  </mat-tab>
-  <mat-tab label="Stats">
-    <app-stats></app-stats>
-  </mat-tab>
-  <mat-tab label="Top Cats">
-    <app-top></app-top>
-  </mat-tab>
-</mat-tab-group>
+  <div parallax class="some-parallax">
+    <a href="#"><div class="center">CAT VOTER</div></a>
+  </div>
 
+  <!--<ng-parallax img="../assets/cat-banner.png" class="some-class"></ng-parallax>-->
+
+  <mat-tab-group>
+    <mat-tab label="Vote">
+      <app-votes></app-votes>
+    </mat-tab>
+    <mat-tab label="Stats">
+      <app-stats></app-stats>
+    </mat-tab>
+    <mat-tab label="Top Cats">
+      <app-top></app-top>
+    </mat-tab>
+  </mat-tab-group>
+</div>
