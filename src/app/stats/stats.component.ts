@@ -12,7 +12,7 @@ import {Lightbox} from "ngx-lightbox";
 export class StatsComponent implements OnInit, OnDestroy {
 
   private catPairs: any;
-  private paginatedPairs: any;
+  private paginatedPairs = [];
   subscription: Subscription;
   paginationIndex = 5;
   paginationStep = 5;
@@ -24,11 +24,13 @@ export class StatsComponent implements OnInit, OnDestroy {
     // we watch for changes when we get new vote from vote component
     this.subscription = loggerService.catVoted$
       .subscribe(cat => {
-      console.log('new cat', cat);
+      console.log('new cat ', cat);
 
       this.getAllCatPairs()
         .then(docs => {
           this.catPairs = docs;
+          if (this.catPairs.length < this.paginationStep)
+            this.paginatedPairs = this.catPairs;
         })
         .catch(err => console.log(err));
 

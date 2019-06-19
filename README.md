@@ -2,9 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
+## Demo
+
+Video of demo : https://youtu.be/4s7pcCVt0Sg .
+
+Not deployed yet, you have to run it locally.
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Install packages with `npm install`
+
+Run your local MongoDB with url `mongodb://localhost:27017` and create database `myproject`.
+
+Run Node.js server with `npm run start-server`
+
+Run Angular client with `npm run start-client`
+
 
 ## Code scaffolding
 

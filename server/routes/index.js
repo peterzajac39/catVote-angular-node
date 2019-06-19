@@ -7,7 +7,6 @@ const assert = require('assert');
 const catfaker = require('cat-names');
 const https = require('https');
 
-
 // Connection URL
 const url = 'mongodb://localhost:27017';
 
